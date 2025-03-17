@@ -1,13 +1,13 @@
 # Install necessary packages
-install.packages("dplyr")  # For data manipulation
-install.packages("readr")   # For reading CSV files
+#install.packages("dplyr")  # For data manipulation
+#install.packages("readr")   # For reading CSV files
 
 # Load the required libraries
 library(dplyr)
 library(readr)
 
 # Load the dataset
-sales_data <- read.csv("sales_data.csv")
+sales_data <- read_csv("sales_data.csv")
 
 # Select only product and sales columns
 product_sales <- sales_data %>%
@@ -32,4 +32,4 @@ region_sales <- sales_data %>%
 print(region_sales)
 
 # Save the summarized data to a new CSV file
-write.csv(region_sales, "region_sales.csv")
+write_csv(region_sales, "region_sales.csv")
