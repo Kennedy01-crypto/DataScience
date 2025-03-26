@@ -52,3 +52,36 @@ bike_buyers_clean$Age[is.na(bike_buyers_clean$Age)] <-
   median(na.omit((bike_buyers$Age)))
 
 colSums(is.na(bike_buyers_clean))
+### Mode function
+
+# Since mode is not an inbuilt function in R, we write a function which calculates the maximum frequency of unique values in every column.
+
+get_mode <- function(x) {                 
+  unique_x <- unique(x)
+  tabulate_x <- tabulate(match(x, unique_x))
+  unique_x[tabulate_x == max(tabulate_x)]
+}
+
+# Marital Status replaced with Mode
+bike_buyers_clean$Marital.Status[is.na(bike_buyers_clean$Marital.Status)] <- 
+  get_mode(bike_buyers$Marital.Status)
+
+# Gender replaced with Mode
+bike_buyers_clean$Gender[is.na(bike_buyers_clean$Gender)] <- 
+  get_mode(bike_buyers$Gender)
+
+# Children replaced with Mode
+bike_buyers_clean$Children[is.na(bike_buyers_clean$Children)] <- 
+  get_mode(bike_buyers$Children)
+
+# Home Owner replaced with Mode
+bike_buyers_clean$Home.Owner[is.na(bike_buyers_clean$Home.Owner)] <- 
+  get_mode(bike_buyers$Home.Owner)
+
+colSums(is.na(bike_buyers_clean))
+
+# Cars replaced with Mean
+bike_buyers_clean$Cars[is.na(bike_buyers_clean$Cars)] <- 
+  mean(bike_buyers$Cars, na.rm = TRUE)
+
+colSums(is.na(bike_buyers_clean))
