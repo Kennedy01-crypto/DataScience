@@ -57,4 +57,17 @@ print(median(Data_Cars$wt)) # 3.325
 print(names(sort(-table(Data_Cars$wt)))[1])
 
 # ---------------------------------------------------
-Percentiles
+# Percentiles
+# Percentiles are used in statistics to give you a number that describes
+# the value that a given percent of the values are lower than.
+# For example, the 25th percentile is the value that 25% of the values ar
+# lower than.
+
+# What is the 75. percentile of the weight of the cars? The answer is 3.61 or 3 610 lbs,
+# meaning that 75% or the cars weight 3 610 lbs or less:
+print(quantile(Data_Cars$wt, 0.75)) # 3.61
+
+# If you run the quantile() function without specifying the
+# c() parameter, you will get the percentiles of 0, 25, 50, 75 and 100:
+
+print(quantile(Data_Cars$wt)) 
